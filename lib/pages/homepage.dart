@@ -185,9 +185,13 @@ class _HomepageState extends State<Homepage> {
                 itemCount: _destinations.length,
                 itemBuilder: (context, index) {
                   final destination = _destinations[index];
-                  return _buildDestinationCard(
-                    destination: destination,
-                    onFavoritePressed: () => _toggleFavorite(index),
+                  return Container(
+                    width: 280,
+                    margin: EdgeInsets.only(right: 20),
+                    child: _buildDestinationCard(
+                      destination: destination,
+                      onFavoritePressed: () => _toggleFavorite(index),
+                    ),
                   );
                 },
               ),
