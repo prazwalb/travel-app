@@ -15,7 +15,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<OnboardingPage> _pages = [
     OnboardingPage(
-      image: 'https://m.media-amazon.com/images/I/A1PaCX4oXjL._AC_SL1500_.jpg',
+      image:
+          'https://images.pexels.com/photos/29874925/pexels-photo-29874925/free-photo-of-hiker-in-the-dolomites-at-sunrise.jpeg',
       title: 'Life is short and the world is ',
       highlightedWord: 'wide',
       description:
@@ -24,7 +25,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ),
     OnboardingPage(
       image:
-          'https://cdn.prod.website-files.com/6009ec8cda7f305645c9d91b/66a4263d01a185d5ea22eeec_6408f6e7b5811271dc883aa8_batman-min.png',
+          'https://images.pexels.com/photos/2265876/pexels-photo-2265876.jpeg?auto=compress&cs=tinysrgb&w=600',
       title: "It's a big world out there go ",
       highlightedWord: 'explore',
       description:
@@ -33,7 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ),
     OnboardingPage(
       image:
-          'https://cdn.shopify.com/s/files/1/0830/9575/files/dune-part-two-movie-poster-matt-ferguson_ac86f8c9-f410-450c-805b-c4352aac4a55_540x.jpg?v=1730814717',
+          'https://images.pexels.com/photos/2531237/pexels-photo-2531237.jpeg?auto=compress&cs=tinysrgb&w=600',
       title: "People don't take trips, trips take ",
       highlightedWord: 'people',
       description:
