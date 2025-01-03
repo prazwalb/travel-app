@@ -125,7 +125,7 @@ class _SignupState extends State<Signup> {
                       borderRadius: BorderRadius.circular(10))),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  return context.goNamed('passwordreset');
+                  return context.goNamed('homepage');
                 }
               },
               child: Text(

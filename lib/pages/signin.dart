@@ -12,6 +12,8 @@ class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool ispassword = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,14 +73,19 @@ class _SigninState extends State<Signin> {
                   child: TextFormField(
                     controller: _passwordController,
                     keyboardType: TextInputType.visiblePassword,
+                    obscureText: !ispassword,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
-                      hintText: '**********',
+                      hintText: '.........',
                       suffixIcon: IconButton(
-                        icon: Icon(Icons.hide_source),
+                        icon: ispassword
+                            ? Icon(Icons.abc)
+                            : Icon(Icons.remove_red_eye),
                         onPressed: () {
-                          _passwordController.clear();
+                          setState(() {
+                            ispassword = !ispassword;
+                          });
                         },
                       ),
                     ),
