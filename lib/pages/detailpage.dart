@@ -269,6 +269,8 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                       context.goNamed('viewpage', pathParameters: {
                         'destinationId': widget.destinationId
                       });
+
+                      // context.goNamed('schedule');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
