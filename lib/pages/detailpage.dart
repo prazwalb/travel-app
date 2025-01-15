@@ -158,97 +158,7 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                           ));
                     },
                   ),
-                )
-                // SingleChildScrollView(
-                //   scrollDirection: Axis.horizontal,
-                //   child: Row(
-                //     spacing: 20,
-                //     children: [
-                //       ClipRRect(
-                //         borderRadius: BorderRadius.circular(10),
-                //         child: Image.network(
-                //           'https://images.pexels.com/photos/29851701/pexels-photo-29851701/free-photo-of-elegant-dessert-display-with-sparkling-touch.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                //           height: 60,
-                //           width: 60,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //       ClipRRect(
-                //         borderRadius: BorderRadius.circular(10),
-                //         child: Image.network(
-                //           'https://images.pexels.com/photos/26570991/pexels-photo-26570991/free-photo-of-xmas-cards-in-niche.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                //           height: 60,
-                //           width: 60,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //       ClipRRect(
-                //         borderRadius: BorderRadius.circular(10),
-                //         child: Image.network(
-                //           'https://images.pexels.com/photos/29694769/pexels-photo-29694769/free-photo-of-cute-christmas-gnomes-by-the-fireplace.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                //           height: 60,
-                //           width: 60,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //       ClipRRect(
-                //         borderRadius: BorderRadius.circular(10),
-                //         child: Image.network(
-                //           'https://images.pexels.com/photos/29768361/pexels-photo-29768361/free-photo-of-stylish-woman-in-urban-setting-with-motion-blur.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                //           height: 60,
-                //           width: 60,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //       ClipRRect(
-                //         borderRadius: BorderRadius.circular(10),
-                //         child: Image.network(
-                //           'https://images.pexels.com/photos/29784452/pexels-photo-29784452/free-photo-of-black-and-white-palm-trees-at-pismo-beach.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                //           height: 60,
-                //           width: 60,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //       ClipRRect(
-                //         borderRadius: BorderRadius.circular(10),
-                //         child: Image.network(
-                //           'https://images.pexels.com/photos/29054656/pexels-photo-29054656/free-photo-of-dynamic-motion-of-berlin-tram-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                //           height: 60,
-                //           width: 60,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //       ClipRRect(
-                //         borderRadius: BorderRadius.circular(10),
-                //         child: Image.network(
-                //           'https://images.pexels.com/photos/28594392/pexels-photo-28594392/free-photo-of-artistic-flat-lay-of-coffee-essentials-on-dark-surface.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                //           height: 60,
-                //           width: 60,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //       ClipRRect(
-                //         borderRadius: BorderRadius.circular(10),
-                //         child: Image.network(
-                //           'https://images.pexels.com/photos/29076255/pexels-photo-29076255/free-photo-of-vibrant-indoor-market-scene-with-stalls.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                //           height: 60,
-                //           width: 60,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //       ClipRRect(
-                //         borderRadius: BorderRadius.circular(10),
-                //         child: Image.network(
-                //           'https://images.pexels.com/photos/29487999/pexels-photo-29487999/free-photo-of-seagulls-flying-over-istanbul-skyline.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                //           height: 60,
-                //           width: 60,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                ,
+                ),
                 SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -266,11 +176,15 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: ElevatedButton(
                     onPressed: () {
-                      context.goNamed('viewpage', pathParameters: {
-                        'destinationId': widget.destinationId
-                      });
+                      context.goNamed(
+                        'viewpage',
+                        pathParameters: {
+                          'destinationId': destination.id,
+                          'viewId': destination.id
+                        },
+                      );
 
-                      // context.goNamed('schedule');
+                      // context.goNamed('Namedschedule');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,

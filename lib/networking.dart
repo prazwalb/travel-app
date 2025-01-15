@@ -103,6 +103,12 @@ Future<void> postPach() async {
   print(res.statusCode);
 }
 
+Future<void> deleteFunction(String postId) async {
+  final res = await http
+      .delete(Uri.parse('https://jsonplaceholder.typicode.com/posts/$postId'));
+  print(res.statusCode);
+}
+
 void main() async {
   // return await fetchpost();
   // final post2 = await getSinglePost('2');
@@ -125,6 +131,8 @@ void main() async {
   final putmethod = await editPost(
       Post(userId: 1, id: 2, body: 'smdfbkgjbdfg', title: 'prazwal'));
   final patchmethod = await postPach();
+
+  final deletepost = deleteFunction('2');
 }
 
 class Post {

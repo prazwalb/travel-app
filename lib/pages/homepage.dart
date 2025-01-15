@@ -1,10 +1,25 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_project/data.dart';
+import 'package:flutter_project/widget/bestDestination.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:http/http.dart' as http;
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
+
+  static Future<List<Bestdestination>> getDestination() async {
+    final res = await http
+        .get(Uri.parse('http://192.168.1.101:8080/popular-destinations'));
+    final datadecode = jsonDecode(res.body);
+    List<Bestdestination> data = [];
+    for (var i = 0; i < datadecode.length; i++) {
+      data.add(Bestdestination.fromJson(datadecode[i]));
+    }
+    return data;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,17 +87,37 @@ class Homepage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 600,
-              child: ListView.separated(
-                itemBuilder: (context, index) =>
-                    DestinationCards(destination: destinations[index]),
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (context, index) => SizedBox(
-                  width: 10,
-                ),
-                itemCount: destinations.length,
-              ),
-            )
+                height: 600,
+                child: FutureBuilder(
+                  future: getDestination(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return DestinationCards(
+                                destination: snapshot.data![index]);
+                          },
+                          separatorBuilder: (context, index) {
+                            return SizedBox(
+                              height: 20,
+                            );
+                          },
+                          itemCount: snapshot.data!.length);
+                    }
+                    return Text('No data');
+                  },
+                )
+                // ListView.separated(
+                //   itemBuilder: (context, index) =>
+                // DestinationCards(destination: destinations[index]),
+                //   scrollDirection: Axis.horizontal,
+                //   separatorBuilder: (context, index) => SizedBox(
+                //     width: 10,
+                //   ),
+                //   itemCount: destinations.length,
+                // ),
+                )
           ],
         ),
       ),
@@ -95,9 +130,10 @@ class Homepage extends StatelessWidget {
               label: 'Home',
               backgroundColor: Colors.blueAccent),
           BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month_outlined),
-              label: 'Calendar',
-              backgroundColor: Colors.blueGrey),
+            icon: Icon(Icons.calendar_month_outlined),
+            label: 'Calendar',
+            backgroundColor: Colors.blueGrey,
+          ),
           BottomNavigationBarItem(
             backgroundColor: Colors.blue,
             icon: Icon(Icons.search),
@@ -118,7 +154,7 @@ class Homepage extends StatelessWidget {
 }
 
 class DestinationCards extends StatelessWidget {
-  final Destination destination;
+  final Bestdestination destination;
 
   const DestinationCards({super.key, required this.destination});
   @override
@@ -154,13 +190,17 @@ class DestinationCards extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: GestureDetector(
-                          onTap: () {
+                          onTap: ()
+                              // {
+                              //   context.goNamed('photos');
+                              // },
+                              {
                             context.goNamed('detailspage', pathParameters: {
                               'destinationId': destination.id,
                             });
                           },
                           child: Image.network(
-                            destination.image,
+                            destination.imageUrl,
                             height: 300,
                             width: double.infinity,
                             fit: BoxFit.cover,

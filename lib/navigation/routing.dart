@@ -1,8 +1,10 @@
 import 'package:flutter_project/data.dart';
+import 'package:flutter_project/getphotos.dart';
 import 'package:flutter_project/pages/detailpage.dart';
 import 'package:flutter_project/pages/forgetpassword.dart';
 import 'package:flutter_project/pages/homepage.dart';
 import 'package:flutter_project/pages/onboarding.dart';
+import 'package:flutter_project/pages/schedule.dart';
 import 'package:flutter_project/pages/signin.dart';
 import 'package:flutter_project/pages/signup.dart';
 import 'package:flutter_project/pages/splash.dart';
@@ -36,7 +38,6 @@ final GoRouter router = GoRouter(initialLocation: '/splash', routes: [
     name: 'signup',
     builder: (context, state) => Signup(),
   ),
-
   GoRoute(
       path: '/homepage',
       name: 'homepage',
@@ -56,17 +57,22 @@ final GoRouter router = GoRouter(initialLocation: '/splash', routes: [
                 destinationId: state.pathParameters['destinationId']!),
             routes: [
               GoRoute(
-                path: 'destinationId',
-                name: 'viewpage',
-                builder: (context, state) => Viewpage(
-                  destinationId: state.pathParameters['destinationId']!,
-                ),
-              )
+                  path: ':viewId',
+                  name: 'viewpage',
+                  builder: (context, state) => Viewpage(
+                        viewId: state.pathParameters['viewId']!,
+                      ),
+                  routes: [
+                    GoRoute(
+                        path: 'schedulepage',
+                        name: 'schedulepage',
+                        builder: (context, state) => Schedule())
+                  ])
             ]),
       ]),
-  // GoRoute(
-  //   path: '/detailpage',
-  //   name: 'detailpage',
-  //   // builder: (context, state) => DestinationDetailsPage())
-  // )
+  GoRoute(
+    path: '/photos',
+    name: 'photos',
+    builder: (context, state) => Photos(),
+  )
 ]);
