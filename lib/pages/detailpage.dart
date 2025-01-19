@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/controllers/destination_controller.dart';
 import 'package:flutter_project/data.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 // import 'package:go_router/go_router.dart';
 
@@ -23,7 +25,9 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
   ];
   @override
   Widget build(BuildContext context) {
-    final destination = destinations
+    final destination = context
+        .watch<DestinationController>()
+        .destination
         .firstWhere((element) => element.id == widget.destinationId);
     return Scaffold(
       body: ListView(
@@ -31,7 +35,7 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
           Stack(
             children: [
               Image.network(
-                destination.image,
+                destination.imageUrl,
                 height: 350,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -99,7 +103,7 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                       ],
                     ),
                     Image.network(
-                      destination.image,
+                      destination.imageUrl,
                       height: 50,
                       width: 50,
                       fit: BoxFit.cover,
@@ -130,7 +134,7 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                     Row(
                       children: [
                         Text(
-                          '\$${destination.pricePerperson}/',
+                          '\$${destination.location}/',
                           style: TextStyle(color: Colors.blueAccent),
                         ),
                         Text('Person')

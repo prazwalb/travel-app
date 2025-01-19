@@ -4,6 +4,7 @@ import 'package:flutter_project/pages/detailpage.dart';
 import 'package:flutter_project/pages/forgetpassword.dart';
 import 'package:flutter_project/pages/homepage.dart';
 import 'package:flutter_project/pages/onboarding.dart';
+import 'package:flutter_project/pages/popularplaces.dart';
 import 'package:flutter_project/pages/schedule.dart';
 import 'package:flutter_project/pages/signin.dart';
 import 'package:flutter_project/pages/signup.dart';
@@ -73,6 +74,12 @@ final GoRouter router = GoRouter(initialLocation: '/splash', routes: [
   GoRoute(
     path: '/photos',
     name: 'photos',
-    builder: (context, state) => Photos(),
-  )
+    builder: (context, state) => Schedule(),
+  ),
+  GoRoute(
+      path: 'popularplace',
+      name: 'popularplace',
+      builder: (context, index) {
+        return PopularPlaces();
+      })
 ]);

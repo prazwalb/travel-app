@@ -27,7 +27,9 @@ class Schedule extends StatelessWidget {
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new),
-          onPressed: context.pop,
+          onPressed: () {
+            return context.pop();
+          },
         ),
       ),
       body: Builder(builder: (context) {
@@ -98,14 +100,16 @@ class Schedule extends StatelessWidget {
             ),
             Expanded(
                 child: ListView.builder(
-              itemCount: destinations.length,
+              itemCount: 5,
               itemBuilder: (context, index) {
                 return Card(
                   margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: ListTile(
                     title: Text(destinations[index].toString()),
-                    subtitle: Text('Destination ${index + 1}'),
-                    leading: Icon(Icons.location_on, color: Colors.blue),
+                    subtitle: Text('Destination ${index + 1} \n location'),
+                    leading: Image.network(
+                      'https://images.pexels.com/photos/29768361/pexels-photo-29768361/free-photo-of-stylish-woman-in-urban-setting-with-motion-blur.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                    ),
                     trailing: Icon(Icons.arrow_forward_ios, size: 16),
                     onTap: () {
                       // Handle destination tap

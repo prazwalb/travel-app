@@ -1,13 +1,16 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_project/controllers/destination_controller.dart';
 import 'package:flutter_project/data.dart';
+import 'package:flutter_project/networking.dart';
 import 'package:flutter_project/widget/bestDestination.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
   static Future<List<Bestdestination>> getDestination() async {
@@ -19,6 +22,17 @@ class Homepage extends StatelessWidget {
       data.add(Bestdestination.fromJson(datadecode[i]));
     }
     return data;
+  }
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  @override
+  void initState() {
+    context.read<DestinationController>().getDestination();
+    super.initState();
   }
 
   @override
@@ -88,25 +102,41 @@ class Homepage extends StatelessWidget {
             ),
             SizedBox(
                 height: 600,
-                child: FutureBuilder(
-                  future: getDestination(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      return ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return DestinationCards(
-                                destination: snapshot.data![index]);
-                          },
-                          separatorBuilder: (context, index) {
-                            return SizedBox(
-                              height: 20,
-                            );
-                          },
-                          itemCount: snapshot.data!.length);
-                    }
-                    return Text('No data');
+                child: Consumer<DestinationController>(
+                  builder: (context, value, child) {
+                    return ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return DestinationCards(
+                              destination: value.destination![index]);
+                        },
+                        separatorBuilder: (context, index) {
+                          return SizedBox(
+                            height: 20,
+                          );
+                        },
+                        itemCount: value.destination!.length);
                   },
+                  // child: FutureBuilder(
+                  //   future: getDestination(),
+                  //   builder: (context, snapshot) {
+                  //     if (snapshot.connectionState == ConnectionState.done) {
+                  //       return ListView.separated(
+                  //           scrollDirection: Axis.horizontal,
+                  //           itemBuilder: (context, index) {
+                  //             return DestinationCards(
+                  //                 destination: snapshot.data![index]);
+                  //           },
+                  //           separatorBuilder: (context, index) {
+                  //             return SizedBox(
+                  //               height: 20,
+                  //             );
+                  //           },
+                  //           itemCount: snapshot.data!.length);
+                  //     }
+                  //     return Text('No data');
+                  //   },
+                  // ),
                 )
                 // ListView.separated(
                 //   itemBuilder: (context, index) =>
@@ -219,6 +249,16 @@ class DestinationCards extends StatelessWidget {
                               size: 24,
                             )),
                       ),
+                      Positioned(
+                          top: 14,
+                          right: 8,
+                          child: TextButton(
+                              onPressed: () {
+                                context
+                                    .read<DestinationController>()
+                                    .deleteDestination(destination.id);
+                              },
+                              child: Text("DELETE")))
                     ],
                   ),
 

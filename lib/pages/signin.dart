@@ -156,17 +156,27 @@ class _SigninState extends State<Signin> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.network(
-                'https://img.icons8.com/?size=96&id=uLWV5A9vXIPu&format=png',
-                height: 50,
-                width: 50,
-                fit: BoxFit.contain,
+              GestureDetector(
+                child: Image.network(
+                  'https://img.icons8.com/?size=96&id=uLWV5A9vXIPu&format=png',
+                  height: 50,
+                  width: 50,
+                  fit: BoxFit.contain,
+                ),
+                onTap: () {
+                  context.goNamed('photos');
+                },
               ),
-              Image.network(
-                'https://img.icons8.com/?size=96&id=Xy10Jcu1L2Su&format=png',
-                height: 50,
-                width: 50,
-                fit: BoxFit.contain,
+              InkWell(
+                child: Image.network(
+                  'https://img.icons8.com/?size=96&id=Xy10Jcu1L2Su&format=png',
+                  height: 50,
+                  width: 50,
+                  fit: BoxFit.contain,
+                ),
+                onTap: () {
+                  context.goNamed('popularplace');
+                },
               ),
               Image.network(
                 'https://img.icons8.com/?size=128&id=119014&format=png',

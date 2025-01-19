@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:flutter_project/widget/bestDestination.dart';
+import 'package:http/http.dart' as http;
+
 class Destination {
   final String name;
   final String image;
@@ -17,11 +22,54 @@ class Destination {
       required this.pricePerperson,
       required this.description,
       this.isFavorite = false});
+
+  static Future<void> addDestination() async {
+    final rara = Bestdestination(
+        id: '1',
+        name: 'name',
+        description: 'description',
+        rating: 1.1,
+        imageUrl:
+            'https://images.pexels.com/photos/2664046/pexels-photo-2664046.jpeg?auto=compress&cs=tinysrgb&w=600',
+        location: 'location');
+
+    final ress = await http.post(
+        Uri.parse('http://192.168.1.101:8080/popular-destinations'),
+        body: jsonEncode(rara.toJson()));
+    print(ress.body);
+  }
+
+  static Future<void> editDestination(Bestdestination dest) async {
+    final ress = await http.put(
+        Uri.parse(
+            'http://192.168.1.101:8080/popular-destinations?id=${dest.id}'),
+        body: jsonEncode(dest.toJson()),
+        headers: {'Content-type': 'application/json; charset=UTF-8'});
+  }
+
+  static Future<void> destinationdelete(String destId) async {
+    final ress = await http.delete(Uri.parse(
+        'http://192.168.1.101:8080/popular-destinations?id=${destId}'));
+  }
+}
+
+void main() async {
+  // await Destination.addDestination();
+  final toEditDest = Bestdestination(
+      id: '1',
+      name: 'Updated Dest',
+      description: 'description',
+      rating: 4,
+      imageUrl:
+          'https://images.pexels.com/photos/2664046/pexels-photo-2664046.jpeg?auto=compress&cs=tinysrgb&w=600',
+      location: 'location');
+  await Destination.editDestination(toEditDest);
+  await Destination.destinationdelete('ztPCoJXu');
 }
 
 final List<Destination> destinations = [
   Destination(
-      id: '1',
+      id: 'Nmew9UeP',
       name: 'Eiffel Tower',
       image:
           'https://images.pexels.com/photos/1530259/pexels-photo-1530259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/controllers/destination_controller.dart';
 import 'package:flutter_project/data.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class Viewpage extends StatelessWidget {
   final String viewId;
@@ -8,7 +10,10 @@ class Viewpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final view = destinations.firstWhere((element) => element.id == viewId);
+    final view = context
+        .watch<DestinationController>()
+        .destination
+        .firstWhere((element) => element.id == viewId);
     return Scaffold(
       // appBar: AppBar(
       //   leading: IconButton(
@@ -27,7 +32,7 @@ class Viewpage extends StatelessWidget {
               Stack(
                 children: [
                   Image.network(
-                    view.image,
+                    view.imageUrl,
                     fit: BoxFit.fill,
                   ),
                   Positioned(
