@@ -19,14 +19,14 @@ class _SigninState extends State<Signin> {
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
-        icon: Icon(Icons.arrow_back_ios_new_outlined),
+        icon: const Icon(Icons.arrow_back_ios_new_outlined),
         onPressed: () {
           context.goNamed('onboard');
         },
       )),
       body: Column(
         children: [
-          Center(
+          const Center(
             child: Text(
               'Sign in now',
               style: TextStyle(
@@ -35,14 +35,14 @@ class _SigninState extends State<Signin> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
             'Please sign in to continue to our app',
             style: TextStyle(
               color: Colors.grey[800],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Form(
@@ -60,7 +60,7 @@ class _SigninState extends State<Signin> {
                       ),
                       hintText: 'Enter your email address',
                       suffixIcon: IconButton(
-                        icon: Icon(Icons.clear),
+                        icon: const Icon(Icons.clear),
                         onPressed: () {
                           _emailController.clear();
                         },
@@ -80,8 +80,8 @@ class _SigninState extends State<Signin> {
                       hintText: '.........',
                       suffixIcon: IconButton(
                         icon: ispassword
-                            ? Icon(Icons.abc)
-                            : Icon(Icons.remove_red_eye),
+                            ? const Icon(Icons.abc)
+                            : const Icon(Icons.remove_red_eye),
                         onPressed: () {
                           setState(() {
                             ispassword = !ispassword;
@@ -94,7 +94,7 @@ class _SigninState extends State<Signin> {
               ],
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -104,7 +104,7 @@ class _SigninState extends State<Signin> {
                   onPressed: () {
                     context.goNamed('forgotpass');
                   },
-                  child: Text(
+                  child: const Text(
                     'Forgot Password?',
                     style: TextStyle(color: Colors.blueAccent),
                   ),
@@ -117,7 +117,7 @@ class _SigninState extends State<Signin> {
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 5, 94, 248),
-                    minimumSize: Size(double.infinity, 60),
+                    minimumSize: const Size(double.infinity, 60),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
@@ -127,32 +127,32 @@ class _SigninState extends State<Signin> {
                     onPressed: () {
                       context.goNamed('homepage');
                     },
-                    child: Text(
+                    child: const Text(
                       'Sign In',
                       style: TextStyle(color: Colors.white),
                     ))),
           ),
-          SizedBox(height: 22),
+          const SizedBox(height: 22),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Dont have an account?'),
+              const Text('Dont have an account?'),
               TextButton(
                 onPressed: () {
                   return context.goNamed('signup');
                 },
-                child: Text(
+                child: const Text(
                   'Sign Up',
                   style: TextStyle(color: Colors.blueAccent),
                 ),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Text('Or Connect'),
-          SizedBox(height: 100),
+          const Text('Or Connect'),
+          const SizedBox(height: 100),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -167,7 +167,7 @@ class _SigninState extends State<Signin> {
                   context.goNamed('photos');
                 },
               ),
-              InkWell(
+              GestureDetector(
                 child: Image.network(
                   'https://img.icons8.com/?size=96&id=Xy10Jcu1L2Su&format=png',
                   height: 50,
@@ -178,11 +178,16 @@ class _SigninState extends State<Signin> {
                   context.goNamed('popularplace');
                 },
               ),
-              Image.network(
-                'https://img.icons8.com/?size=128&id=119014&format=png',
-                height: 50,
-                width: 50,
-                fit: BoxFit.contain,
+              GestureDetector(
+                child: Image.network(
+                  'https://img.icons8.com/?size=128&id=119014&format=png',
+                  height: 50,
+                  width: 50,
+                  fit: BoxFit.contain,
+                ),
+                onTap: () {
+                  context.goNamed('profilepage');
+                },
               ),
             ],
           ),

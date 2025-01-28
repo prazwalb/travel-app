@@ -21,7 +21,7 @@ class Photos extends StatelessWidget {
               itemCount: 100,
             );
           }
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         },
       ),
     );

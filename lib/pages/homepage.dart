@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_project/controllers/destination_controller.dart';
-import 'package:flutter_project/data.dart';
-import 'package:flutter_project/networking.dart';
 import 'package:flutter_project/widget/bestDestination.dart';
 
 import 'package:go_router/go_router.dart';
@@ -53,7 +51,7 @@ class _HomepageState extends State<Homepage> {
                     width: 40,
                     fit: BoxFit.contain),
               ),
-              Text(
+              const Text(
                 'John Doe',
                 style: TextStyle(fontSize: 20, color: Colors.black),
               ),
@@ -62,7 +60,8 @@ class _HomepageState extends State<Homepage> {
         ),
         actions: [
           IconButton(
-              onPressed: () {}, icon: Icon(Icons.notification_add, size: 35))
+              onPressed: () {},
+              icon: const Icon(Icons.notification_add, size: 35))
         ],
         elevation: 0,
       ),
@@ -72,10 +71,10 @@ class _HomepageState extends State<Homepage> {
           children: [
             RichText(
               textAlign: TextAlign.center,
-              text: TextSpan(
+              text: const TextSpan(
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 4, 4, 4),
+                    color: Color.fromARGB(255, 4, 4, 4),
                     fontSize: 40),
                 children: [
                   TextSpan(text: 'Explore the \nBeautiful'),
@@ -85,8 +84,8 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
+            const Padding(
+              padding: EdgeInsets.all(20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -95,7 +94,7 @@ class _HomepageState extends State<Homepage> {
                           color: Colors.black, fontWeight: FontWeight.bold)),
                   Text('View all',
                       style: TextStyle(
-                          color: const Color.fromARGB(255, 4, 94, 249),
+                          color: Color.fromARGB(255, 4, 94, 249),
                           fontWeight: FontWeight.bold)),
                 ],
               ),
@@ -108,14 +107,14 @@ class _HomepageState extends State<Homepage> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return DestinationCards(
-                              destination: value.destination![index]);
+                              destination: value.destination[index]);
                         },
                         separatorBuilder: (context, index) {
-                          return SizedBox(
+                          return const SizedBox(
                             height: 20,
                           );
                         },
-                        itemCount: value.destination!.length);
+                        itemCount: value.destination.length);
                   },
                   // child: FutureBuilder(
                   //   future: getDestination(),
@@ -151,34 +150,6 @@ class _HomepageState extends State<Homepage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
-        showUnselectedLabels: true,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-              backgroundColor: Colors.blueAccent),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
-            label: 'Calendar',
-            backgroundColor: Colors.blueGrey,
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message_rounded),
-            label: 'Messages',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Profile',
-          ),
-        ],
-      ),
     );
   }
 }
@@ -207,7 +178,7 @@ class DestinationCards extends StatelessWidget {
                     color: Colors.grey.shade500,
                     spreadRadius: 2,
                     blurRadius: 5,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
@@ -229,11 +200,14 @@ class DestinationCards extends StatelessWidget {
                               'destinationId': destination.id,
                             });
                           },
-                          child: Image.network(
-                            destination.imageUrl,
-                            height: 300,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
+                          child: Hero(
+                            tag: destination.id,
+                            child: Image.network(
+                              destination.imageUrl,
+                              height: 300,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -243,9 +217,9 @@ class DestinationCards extends StatelessWidget {
                         right: 8,
                         child: IconButton(
                             onPressed: () {},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.bookmark_border,
-                              color: const Color.fromARGB(255, 14, 14, 14),
+                              color: Color.fromARGB(255, 14, 14, 14),
                               size: 24,
                             )),
                       ),
@@ -258,12 +232,12 @@ class DestinationCards extends StatelessWidget {
                                     .read<DestinationController>()
                                     .deleteDestination(destination.id);
                               },
-                              child: Text("DELETE")))
+                              child: const Text("DELETE")))
                     ],
                   ),
 
                   // Text Content
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Row(
@@ -273,7 +247,7 @@ class DestinationCards extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           destination.name,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -281,7 +255,7 @@ class DestinationCards extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.star,
                               color: Colors.amber,
                             ),
@@ -294,7 +268,7 @@ class DestinationCards extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Row(
                     children: [
                       IconButton(

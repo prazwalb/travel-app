@@ -4,7 +4,7 @@ import 'package:flutter_project/data.dart';
 import 'package:go_router/go_router.dart';
 
 class Schedule extends StatelessWidget {
-  Schedule({Key? key}) : super(key: key);
+  Schedule({super.key});
 
   final _calendarControllerToday = AdvancedCalendarController.today();
 
@@ -26,7 +26,7 @@ class Schedule extends StatelessWidget {
         title: const Text('Schedule'),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new),
+          icon: const Icon(Icons.arrow_back_ios_new),
           onPressed: () {
             return context.pop();
           },
@@ -85,13 +85,13 @@ class Schedule extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Best Destination',
+                  const Text('Best Destination',
                       style: TextStyle(
                           color: Colors.black, fontWeight: FontWeight.bold)),
                   TextButton(
-                    child: Text('View all',
+                    child: const Text('View all',
                         style: TextStyle(
-                            color: const Color.fromARGB(255, 4, 94, 249),
+                            color: Color.fromARGB(255, 4, 94, 249),
                             fontWeight: FontWeight.bold)),
                     onPressed: () {},
                   ),
@@ -103,14 +103,15 @@ class Schedule extends StatelessWidget {
               itemCount: 5,
               itemBuilder: (context, index) {
                 return Card(
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: ListTile(
                     title: Text(destinations[index].toString()),
                     subtitle: Text('Destination ${index + 1} \n location'),
                     leading: Image.network(
                       'https://images.pexels.com/photos/29768361/pexels-photo-29768361/free-photo-of-stylish-woman-in-urban-setting-with-motion-blur.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
                     ),
-                    trailing: Icon(Icons.arrow_forward_ios, size: 16),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                     onTap: () {
                       // Handle destination tap
                       print('Tapped on ${destinations[index]}');

@@ -48,8 +48,8 @@ class Destination {
   }
 
   static Future<void> destinationdelete(String destId) async {
-    final ress = await http.delete(Uri.parse(
-        'http://192.168.1.101:8080/popular-destinations?id=${destId}'));
+    final ress = await http.delete(
+        Uri.parse('http://192.168.1.101:8080/popular-destinations?id=$destId'));
   }
 }
 

@@ -15,29 +15,29 @@ class _ForgotpasswordState extends State<Forgotpassword> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: context.pop, icon: Icon(Icons.arrow_back_ios_new)),
+            onPressed: context.pop, icon: const Icon(Icons.arrow_back_ios_new)),
       ),
       body: Column(children: [
-        Center(
+        const Center(
           child: Text(
             'Forgot Password',
             style: TextStyle(
                 color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Text(
           'Enter your email address to reset your password',
           style: TextStyle(
             color: Colors.grey[800],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         OtpTextField(
           numberOfFields: 5,
-          borderColor: Color(0xFF512DA8),
+          borderColor: const Color(0xFF512DA8),
           //set to true to show as box or false to show as dash
           showFieldAsBox: false,
           keyboardType: TextInputType.number,
@@ -51,14 +51,14 @@ class _ForgotpasswordState extends State<Forgotpassword> {
                 context: context,
                 builder: (context) {
                   return AlertDialog(
-                    title: Text("Verification Code"),
+                    title: const Text("Verification Code"),
                     content: Text('Code entered is $verificationCode'),
                     actions: [
                       TextButton(
                           onPressed: () {
                             context.pop();
                           },
-                          child: Text("ok"))
+                          child: const Text("ok"))
                     ],
                   );
                 });

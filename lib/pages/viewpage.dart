@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/controllers/destination_controller.dart';
-import 'package:flutter_project/data.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -31,9 +30,12 @@ class Viewpage extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Image.network(
-                    view.imageUrl,
-                    fit: BoxFit.fill,
+                  Hero(
+                    tag: view.id,
+                    child: Image.network(
+                      view.imageUrl,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                   Positioned(
                     top: 30,
@@ -50,14 +52,14 @@ class Viewpage extends StatelessWidget {
                             onPressed: () {
                               context.pop();
                             },
-                            icon: Icon(Icons.arrow_back_ios),
+                            icon: const Icon(Icons.arrow_back_ios),
                           ),
-                          Text(
+                          const Text(
                             'View',
                             style: TextStyle(fontSize: 30),
                           ),
                           IconButton(
-                            icon: Icon(Icons.add),
+                            icon: const Icon(Icons.add),
                             onPressed: () {},
                           )
                         ],
@@ -89,7 +91,7 @@ class Viewpage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Column(
+                            const Column(
                               spacing: 10,
                               children: [
                                 SizedBox(height: 6),
@@ -135,7 +137,7 @@ class Viewpage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Column(
+                            const Column(
                               spacing: 10,
                               children: [
                                 SizedBox(height: 6),
@@ -174,13 +176,13 @@ class Viewpage extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    '${view.name}',
-                                    style: TextStyle(
+                                    view.name,
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 25),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                const Padding(
+                                  padding: EdgeInsets.all(8.0),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -206,8 +208,8 @@ class Viewpage extends StatelessWidget {
                                     color: Colors.grey.shade400,
                                   ),
                                   Text(
-                                    '${view.location}',
-                                    style: TextStyle(color: Colors.white),
+                                    view.location,
+                                    style: const TextStyle(color: Colors.white),
                                   )
                                 ],
                               ),
@@ -220,14 +222,14 @@ class Viewpage extends StatelessWidget {
                                     Icons.access_time_rounded,
                                     color: Colors.grey.shade400,
                                   ),
-                                  Text(
+                                  const Text(
                                     '45 Minutes',
                                     style: TextStyle(color: Colors.white),
                                   )
                                 ],
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 10),
@@ -239,7 +241,7 @@ class Viewpage extends StatelessWidget {
                                             'viewId': view.id,
                                           });
                                     },
-                                    child: Text('See on the Map'))),
+                                    child: const Text('See on the Map'))),
                           ],
                         ),
                       ),

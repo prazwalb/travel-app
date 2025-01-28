@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/controllers/destination_controller.dart';
-import 'package:flutter_project/data.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -34,11 +33,14 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
         children: [
           Stack(
             children: [
-              Image.network(
-                destination.imageUrl,
-                height: 350,
-                width: double.infinity,
-                fit: BoxFit.cover,
+              Hero(
+                tag: destination.id,
+                child: Image.network(
+                  destination.imageUrl,
+                  height: 350,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
               Positioned(
                 top: 30,
@@ -55,15 +57,15 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                         onPressed: () {
                           context.goNamed('homepage');
                         },
-                        icon: Icon(Icons.arrow_back_ios),
+                        icon: const Icon(Icons.arrow_back_ios),
                       ),
-                      Text(
+                      const Text(
                         'Details',
                         style: TextStyle(fontSize: 25),
                       ),
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.bookmark_border),
+                        icon: const Icon(Icons.bookmark_border),
                       ),
                     ],
                   ),
@@ -87,17 +89,16 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             destination.name,
-                            style: TextStyle(fontSize: 30),
+                            style: const TextStyle(fontSize: 30),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             destination.location,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20,
-                                color:
-                                    const Color.fromARGB(255, 105, 105, 105)),
+                                color: Color.fromARGB(255, 105, 105, 105)),
                           ),
                         )
                       ],
@@ -110,7 +111,7 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -118,13 +119,13 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.location_on_outlined),
+                        const Icon(Icons.location_on_outlined),
                         Text(destination.name)
                       ],
                     ),
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.star,
                           color: Colors.amberAccent,
                         ),
@@ -135,18 +136,18 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                       children: [
                         Text(
                           '\$${destination.location}/',
-                          style: TextStyle(color: Colors.blueAccent),
+                          style: const TextStyle(color: Colors.blueAccent),
                         ),
-                        Text('Person')
+                        const Text('Person')
                       ],
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 SizedBox(
                   height: 50,
                   child: ListView.separated(
-                    separatorBuilder: (context, index) => SizedBox(
+                    separatorBuilder: (context, index) => const SizedBox(
                       width: 10,
                     ),
                     scrollDirection: Axis.horizontal,
@@ -163,9 +164,9 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                     },
                   ),
                 ),
-                SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const SizedBox(height: 10),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                   child: Text(
                     'About Destination',
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
@@ -175,7 +176,7 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                   padding: const EdgeInsets.all(10.0),
                   child: Text(destination.description),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: ElevatedButton(
@@ -197,9 +198,9 @@ class _DestinationDetailsPageState extends State<DestinationDetailsPage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Book Now',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
                       ),

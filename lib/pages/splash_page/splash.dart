@@ -12,7 +12,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     Future.delayed(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
       () {
         if (mounted) {
           context.goNamed('onboard');

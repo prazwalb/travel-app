@@ -21,12 +21,12 @@ class _SignupState extends State<Signup> {
           onPressed: () {
             context.goNamed('signin');
           },
-          icon: Icon(Icons.arrow_back_ios_new),
+          icon: const Icon(Icons.arrow_back_ios_new),
         ),
       ),
       body: Column(
         children: [
-          Center(
+          const Center(
             child: Text(
               'Sign up now',
               style: TextStyle(
@@ -35,14 +35,14 @@ class _SignupState extends State<Signup> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
             'Please fill the details and create an account',
             style: TextStyle(
               color: Colors.grey[800],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Form(
@@ -72,7 +72,7 @@ class _SignupState extends State<Signup> {
                       ),
                       hintText: 'Enter your email address',
                       suffixIcon: IconButton(
-                        icon: Icon(Icons.clear),
+                        icon: const Icon(Icons.clear),
                         onPressed: () {
                           _emailController.clear();
                         },
@@ -91,7 +91,7 @@ class _SignupState extends State<Signup> {
                           borderRadius: BorderRadius.circular(10)),
                       hintText: '**********',
                       suffixIcon: IconButton(
-                        icon: Icon(Icons.hide_source),
+                        icon: const Icon(Icons.hide_source),
                         onPressed: () {
                           _passwordController.clear();
                         },
@@ -102,15 +102,15 @@ class _SignupState extends State<Signup> {
               ],
             ),
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(20.0),
                 child: Text(
                   'password must be 8 character',
                   style:
-                      TextStyle(color: const Color.fromARGB(255, 11, 11, 11)),
+                      TextStyle(color: Color.fromARGB(255, 11, 11, 11)),
                 ),
               ),
             ],
@@ -120,7 +120,7 @@ class _SignupState extends State<Signup> {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 5, 94, 248),
-                  minimumSize: Size(double.infinity, 60),
+                  minimumSize: const Size(double.infinity, 60),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))),
               onPressed: () {
@@ -128,30 +128,30 @@ class _SignupState extends State<Signup> {
                   return context.goNamed('homepage');
                 }
               },
-              child: Text(
+              child: const Text(
                 'Sign Up',
                 style: TextStyle(color: Colors.white),
               ),
             ),
           ),
-          SizedBox(height: 22),
+          const SizedBox(height: 22),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Already have an account'),
+              const Text('Already have an account'),
               TextButton(
                 onPressed: () {
                   return context.goNamed('signinpage');
                 },
-                child: Text(
+                child: const Text(
                   'Sign in',
                   style: TextStyle(color: Colors.blueAccent),
                 ),
               )
             ],
           ),
-          Text('Or Connect'),
-          SizedBox(height: 50),
+          const Text('Or Connect'),
+          const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
