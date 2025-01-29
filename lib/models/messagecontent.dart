@@ -1,25 +1,20 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'messagecontent.freezed.dart';
 part 'messagecontent.g.dart';
 
-@JsonSerializable()
-class MessageContent {
-  final String message;
-  final DateTime sentAt;
-  final String userProfileImageUrl;
-  final bool isSeen;
-  final String userName;
-  final DateTime lastSentAt;
-
-  MessageContent({
-    required this.message,
-    required this.sentAt,
-    required this.userProfileImageUrl,
-    this.isSeen = false,
-    required this.userName,
-    required this.lastSentAt,
-  });
+@Freezed()
+class MessageContent with _$MessageContent {
+  const factory MessageContent({
+    required String message,
+    required DateTime sentAt,
+    required String userProfileImageUrl,
+    @Default(false) bool isSeen,
+    required String userName,
+    required DateTime lastSentAt,
+  }) = _MessageContent;
 
   factory MessageContent.fromJson(Map<String, dynamic> json) =>
       _$MessageContentFromJson(json);
-  Map<String, dynamic> toJson() => _$MessageContentToJson(this);
 }
