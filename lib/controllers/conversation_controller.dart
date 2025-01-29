@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/pages/messagepage/messagedetail.dart';
-import 'package:flutter_project/widget/message_card.dart';
+import 'package:flutter_project/models/conversation.dart';
+import 'package:flutter_project/models/messagecontent.dart';
 
 class ConversationController extends ChangeNotifier {
   List<Conversation> conversations = [

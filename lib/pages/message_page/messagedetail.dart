@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/controllers/conversation_controller.dart';
-import 'package:flutter_project/widget/message_card.dart';
+import 'package:flutter_project/models/conversation.dart';
+import 'package:flutter_project/models/messagecontent.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -199,22 +200,4 @@ class RecievedMessageWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-class MessageContent {
-  final String message;
-  final DateTime sentAt;
-  final String userProfileImageUrl;
-  final bool isSeen;
-  final String userName;
-  final DateTime lastSentAt;
-
-  MessageContent({
-    required this.message,
-    required this.sentAt,
-    required this.userProfileImageUrl,
-    this.isSeen = false,
-    required this.userName,
-    required this.lastSentAt,
-  });
 }

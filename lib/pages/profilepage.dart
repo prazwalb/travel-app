@@ -80,11 +80,13 @@ class Profilepage extends StatelessWidget {
             child: Column(
               children: [
                 ListTile(
-                    leading: const Icon(Icons.person),
-                    title: const Text('Profile'),
-                    trailing: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.arrow_forward_ios_outlined))),
+                  leading: const Icon(Icons.person),
+                  title: const Text('Profile'),
+                  trailing: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.arrow_forward_ios_outlined),
+                  ),
+                ),
                 ListTile(
                     leading: const Icon(Icons.bookmark_border),
                     title: const Text('Bookmarked'),

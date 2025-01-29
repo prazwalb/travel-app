@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeLayout extends StatelessWidget {
+class HomeLayout extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
 
   const HomeLayout({super.key, required this.navigationShell});
 
+  @override
+  State<HomeLayout> createState() => _HomeLayoutState();
+}
+
+void colorchange() {}
+
+class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,23 +45,25 @@ class HomeLayout extends StatelessWidget {
       //   ],
       //   elevation: 0,
       // ),
-      body: navigationShell,
+      body: widget.navigationShell,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 1,
         showUnselectedLabels: true,
-        onTap: (value) => navigationShell.goBranch(value),
-        items: const <BottomNavigationBarItem>[
+        onTap: (value) {
+          widget.navigationShell.goBranch(value);
+        },
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-              backgroundColor: Colors.blueAccent),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
-            label: 'Calendar',
-            backgroundColor: Colors.blueGrey,
+            backgroundColor: Colors.amber,
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.blue,
+            icon: Icon(Icons.calendar_month_outlined),
+            label: 'Calendar',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Search',
           ),

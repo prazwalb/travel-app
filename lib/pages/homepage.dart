@@ -60,7 +60,9 @@ class _HomepageState extends State<Homepage> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.goNamed('notifications');
+              },
               icon: const Icon(Icons.notification_add, size: 35))
         ],
         elevation: 0,

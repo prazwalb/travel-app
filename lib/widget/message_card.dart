@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/pages/messagepage/messagedetail.dart';
+import 'package:flutter_project/models/conversation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 enum UserStatus {
   active,
@@ -68,7 +69,7 @@ class MessageCard extends StatelessWidget {
       ),
       title: Text(conversation.userName),
       subtitle: conversation.isTyping
-          ? const Text(
+          ? Text(
               'Typing...',
               style: TextStyle(color: Colors.blue),
             )
@@ -81,7 +82,7 @@ class MessageCard extends StatelessWidget {
           // message.isSeen ? Icon(Icons.check) : SizedBox(),
           Visibility(
             visible: conversation.isSeen,
-            child: const Icon(Icons.check),
+            child: Icon(Icons.check),
           ),
           // Text(
           //   DateFormat.jm().format(conversation.lastSentAt),
@@ -90,22 +91,4 @@ class MessageCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class Conversation {
-  final String profileImage;
-  final String userName;
-  final bool isSeen;
-  final bool isTyping;
-  final bool isRead;
-  List<MessageContent> messages;
-
-  Conversation({
-    required this.profileImage,
-    required this.userName,
-    this.isSeen = false,
-    this.isTyping = false,
-    this.isRead = false,
-    required this.messages,
-  });
 }
